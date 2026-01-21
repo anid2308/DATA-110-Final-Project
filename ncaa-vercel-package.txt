@@ -1,0 +1,343 @@
+# NCAA Basketball Analytics - Vercel Deployment Package
+
+## Complete File Structure for Your GitHub Repo
+
+```
+ncaa-basketball-analytics/
+├── public/
+│   ├── index.html
+│   └── favicon.ico (optional)
+├── src/
+│   ├── App.js
+│   ├── index.js
+│   └── index.css
+├── package.json
+├── .gitignore
+├── vercel.json (optional, for routing)
+└── README.md
+```
+
+---
+
+## File Contents
+
+### 1. `package.json`
+```json
+{
+  "name": "ncaa-basketball-analytics",
+  "version": "1.0.0",
+  "description": "Interactive dashboard analyzing NCAA Division I men's basketball offensive vs defensive efficiency",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.10.0",
+    "lucide-react": "^0.263.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
+```
+
+### 2. `public/index.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="NCAA Basketball Analytics - Offense vs Defense Efficiency Analysis"
+    />
+    <title>NCAA Basketball Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
+```
+
+### 3. `src/index.js`
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+### 4. `src/index.css`
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+```
+
+### 5. `src/App.js`
+**Copy the ENTIRE React component code from the artifact I created above** (the NCAABasketballAnalytics component)
+
+### 6. `.gitignore`
+```
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production
+/build
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vercel
+.vercel
+```
+
+### 7. `vercel.json` (Optional - for React Router support)
+```json
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
+```
+
+### 8. `README.md`
+```markdown
+# NCAA Basketball Analytics Dashboard
+
+Interactive visualization dashboard analyzing whether offensive or defensive efficiency matters more for winning NCAA Division I men's basketball games.
+
+## Research Question
+Does offensive or defensive efficiency contribute more to winning games in NCAA Division I men's basketball?
+
+## Key Findings
+- **Offense matters more**: Linear regression coefficient of 0.64 vs 0.45 for defense
+- **Statistical significance**: Permutation test with p-value = 0.0005
+- **Practical impact**: Offense-heavy teams win 2.6% more games on average
+- **Model performance**: R² = 0.60, explaining 60% of win percentage variance
+
+## Dataset
+- **Source**: barttorvik.com
+- **Coverage**: 2013-2023 (excluding 2020)
+- **Records**: 3,523 team-season records
+- **Teams**: ~350 NCAA Division I programs
+
+## Technology Stack
+- React 18
+- Recharts for data visualization
+- Tailwind CSS for styling
+- Lucide React for icons
+
+## Local Development
+```bash
+npm install
+npm start
+```
+
+## Deployment
+Deployed on Vercel: [Your deployment URL will appear here]
+
+## Team
+Panda Ballers Research Group:
+- Audrey Sompie
+- Anirudh Dhawan
+- Sanjana Holla
+- Naomi Webster
+- Dane Nighswander
+- Ira Joshi
+```
+
+---
+
+## Step-by-Step Deployment Instructions
+
+### Option 1: Deploy via GitHub (Recommended)
+
+1. **Create the project structure locally:**
+   ```bash
+   mkdir ncaa-basketball-analytics
+   cd ncaa-basketball-analytics
+   ```
+
+2. **Create all files listed above** with their respective content
+
+3. **Initialize Git and push to GitHub:**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit: NCAA Basketball Analytics"
+   git branch -M main
+   git remote add origin https://github.com/YOUR_USERNAME/ncaa-basketball-analytics.git
+   git push -u origin main
+   ```
+
+4. **Deploy on Vercel:**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "Add New Project"
+   - Import your GitHub repository
+   - Vercel will auto-detect React settings:
+     - Framework Preset: Create React App
+     - Build Command: `npm run build`
+     - Output Directory: `build`
+   - Click "Deploy"
+
+### Option 2: Quick Deploy via Vercel CLI
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Navigate to project directory
+cd ncaa-basketball-analytics
+
+# Deploy
+vercel
+
+# For production
+vercel --prod
+```
+
+---
+
+## Testing Before Deployment
+
+Before pushing to GitHub, test locally:
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+
+# Build for production (this is what Vercel runs)
+npm run build
+```
+
+If `npm run build` succeeds without errors, your deployment will work on Vercel!
+
+---
+
+## Customization Options
+
+### Add your actual data
+Replace the simulated data generation functions in App.js with actual data loading:
+- You can host `mensD1bball.csv` in the `public/` folder
+- Use fetch or Papa Parse to load and process the CSV
+- Update the visualization components to use real data
+
+### Color scheme
+Modify the gradient colors in the component:
+```javascript
+className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900"
+```
+
+### Add more visualizations
+The recharts library supports many chart types:
+- Area charts
+- Radar charts
+- Pie charts
+- Composed charts
+
+---
+
+## Troubleshooting
+
+**Issue**: Blank page after deploy
+- **Fix**: Check build logs in Vercel dashboard
+- **Common cause**: Build errors or missing dependencies
+
+**Issue**: Charts not displaying
+- **Fix**: Ensure recharts is properly installed
+- **Check**: `npm install recharts`
+
+**Issue**: Styling looks broken
+- **Fix**: Verify Tailwind CDN is loaded in index.html
+- **Alternative**: Install Tailwind as a dependency
+
+---
+
+## What Makes This Deployment-Ready?
+
+✅ Complete `package.json` with all dependencies
+✅ Proper folder structure (public/, src/)
+✅ Build script configured
+✅ .gitignore excludes node_modules and build
+✅ Responsive design with mobile support
+✅ Interactive visualizations
+✅ Professional UI/UX
+✅ No environment variables needed (all data simulated)
+✅ Works with Vercel's automatic detection
+
+---
+
+## Next Steps After Deployment
+
+1. **Custom domain**: Add your own domain in Vercel settings
+2. **Analytics**: Enable Vercel Analytics to track visitors
+3. **Real data**: Integrate actual CSV data processing
+4. **Additional features**: Add data filtering, export capabilities
+5. **Share**: Get the Vercel URL and share your research!
+
+Your deployed app will be available at: `https://your-project-name.vercel.app`
