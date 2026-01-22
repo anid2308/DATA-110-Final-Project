@@ -1,0 +1,15 @@
+# Node / React
+node_modules/
+web/node_modules/
+build/
+web/build/
+
+# Vercel
+.vercel
+
+# OS / misc
+.DS_Store
+
+# Env
+.env
+.env.*.local
