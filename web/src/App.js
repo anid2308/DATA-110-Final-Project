@@ -63,8 +63,8 @@ const NCAABasketballAnalytics = () => {
   ];
 
   const winPctComparison = [
-    { style: 'Offense-Heavy', winPct: 0.556 },
-    { style: 'Defense-Heavy', winPct: 0.530 }
+    { teamstyle: 'Offense-Heavy', winPct: 0.556 },
+    { teamstyle: 'Defense-Heavy', winPct: 0.530 }
   ];
 
   return (
@@ -211,7 +211,7 @@ const NCAABasketballAnalytics = () => {
               <ResponsiveContainer width="100%" height={400}>
                 <ScatterChart margin={{ top: 20, right: 30, bottom: 40, left: 40 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                  <XAxis dataKey="x" type="number" stroke="#fff" />
+                  <XAxis dataKey="x" type="number"stroke="#fff"domain={[80, 125]} tickCount={6} reversed={selectedMetric === 'ADJDE'} />
                   <YAxis dataKey="y" type="number" stroke="#fff" />
                   <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #3b82f6' }} />
                   <Scatter data={generateScatterData()} fill="#3b82f6" fillOpacity={0.6} />
@@ -220,7 +220,7 @@ const NCAABasketballAnalytics = () => {
               <p className="text-gray-300 mt-4">
                 {selectedMetric === 'ADJOE'
                   ? 'Strong positive correlation: Higher offensive efficiency → Higher win percentage'
-                  : 'Strong negative correlation: Lower defensive efficiency (fewer points allowed) → Higher win percentage'}
+                  : 'Strong negative correlation: Lower defensive efficiency (fewer points allowed) → Higher win percentage (axes are flipped!)'}
               </p>
             </div>
 
@@ -229,7 +229,7 @@ const NCAABasketballAnalytics = () => {
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={winPctComparison}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                  <XAxis dataKey="style" stroke="#fff" />
+                  <XAxis dataKey="teamstyle" stroke="#fff" />
                   <YAxis stroke="#fff" domain={[0.5, 0.6]} />
                   <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #3b82f6' }} />
                   <Bar dataKey="winPct" fill="#3b82f6">
@@ -288,7 +288,7 @@ const NCAABasketballAnalytics = () => {
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
-              <div className="mt-4 grid md:grid-cols-2 gap-4">
+              <div className="mt-4 grid md:grid-cols-3 gap-4">
                 <div className="p-4 bg-blue-900 bg-opacity-30 rounded-lg border border-blue-500">
                   <p className="text-blue-200 font-semibold mb-2">Offensive Efficiency (0.64)</p>
                   <p className="text-sm text-gray-300">Strongest predictor - better offense significantly increases win probability</p>
@@ -297,6 +297,12 @@ const NCAABasketballAnalytics = () => {
                   <p className="text-red-200 font-semibold mb-2">Defensive Efficiency (0.45)</p>
                   <p className="text-sm text-gray-300">Second strongest - good defense is important but slightly less impactful</p>
                 </div>
+                <div className="p-4 bg-green-900 bg-opacity-30 rounded-lg border border-green-500">
+                  <p className="text-green-200 font-semibold mb-2">Tempo (0.005)</p>
+                  <p className="text-sm text-gray-300">Very small coefficient — pace has minimal predictive power compared to offense/defense</p>
+                <p className="text-xs text-gray-400 mt-2">
+                </p>
+              </div>
               </div>
             </div>
 
@@ -415,7 +421,7 @@ const NCAABasketballAnalytics = () => {
                 <strong>Team Members:</strong> Audrey Sompie, Anirudh Dhawan, Sanjana Holla, Naomi Webster, Dane Nighswander, Ira Joshi
               </p>
               <p className="text-gray-400 text-xs mt-2">
-                Data Source: barttorvik.com | Methods: Linear Regression, Permutation Testing, MinMax Scaling
+                Data Source: barttorvik.com 
               </p>
             </div>
           </div>
